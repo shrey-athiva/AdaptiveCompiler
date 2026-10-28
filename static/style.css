@@ -1,0 +1,413 @@
+
+:root {
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: #e8edf8;
+    background: #0b1020;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: radial-gradient(ellipse at top left, #17264a, #0b1020 55%);
+}
+
+.topbar {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 22px 5%;
+    border-bottom: 1px solid #26324a;
+    background: #0b1020cc;
+}
+
+.logo {
+    display: grid;
+    place-items: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 13px;
+    background: linear-gradient(135deg, #4e80ff, #8158e8);
+    font-weight: 800;
+    font-size: 18px;
+}
+
+h1, h2, p {
+    margin: 0;
+}
+
+h1 {
+    font-size: 19px;
+}
+
+.topbar p {
+    color: #8d9bb7;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.status {
+    margin-left: auto;
+    color: #a9b7d0;
+    font-size: 12px;
+}
+
+.status span {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #48d5a0;
+    margin-right: 7px;
+}
+
+main {
+    max-width: 1250px;
+    margin: 32px auto;
+    padding: 0 24px;
+}
+
+.panel {
+    background: #121a2b;
+    border: 1px solid #27344d;
+    border-radius: 15px;
+    padding: 22px;
+    min-width: 0;
+    box-shadow: 0 12px 30px #00000018;
+}
+
+.panel-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.eyebrow {
+    color: #8297bd;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+h2 {
+    font-size: 17px;
+    margin-top: 6px;
+}
+
+textarea, .output {
+    display: block;
+    width: 100%;
+    border: 1px solid #2a3852;
+    border-radius: 10px;
+    background: #0a1020;
+    color: #d8e4ff;
+    font: 14px/1.8 Consolas, monospace;
+}
+
+textarea {
+    min-height: 235px;
+    resize: vertical;
+    padding: 17px;
+    outline: none;
+    tab-size: 4;
+}
+
+textarea:focus {
+    border-color: #6289ff;
+    box-shadow: 0 0 0 3px #6289ff20;
+}
+
+.editor-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-top: 16px;
+    color: #8391ad;
+    font-size: 12px;
+}
+
+button {
+    cursor: pointer;
+    border: 1px solid #354360;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-weight: 600;
+    color: #dce6ff;
+    background: #202b41;
+    transition: filter 0.2s, transform 0.2s;
+}
+
+button:hover {
+    filter: brightness(1.15);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+.primary {
+    background: #5278f5;
+    border-color: #5278f5;
+    color: white;
+}
+
+.results-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-top: 20px;
+}
+
+.output {
+    min-height: 210px;
+    max-height: 440px;
+    overflow: auto;
+    padding: 15px;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.tag {
+    color: #a9c2ff;
+    background: #202f51;
+    padding: 5px 9px;
+    border-radius: 20px;
+    font-size: 11px;
+}
+
+.footnote {
+    color: #8d9bb7;
+    font-size: 12px;
+    text-align: center;
+    margin: 24px 0;
+}
+
+@media (max-width: 760px) {
+    .results-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .topbar {
+        padding: 18px;
+    }
+
+    .status {
+        display: none;
+    }
+
+    main {
+        padding: 0 14px;
+        margin-top: 18px;
+    }
+
+    .panel {
+        padding: 16px;
+    }
+}
+
+/* CodeMirror source editor */
+.CodeMirror {
+    height: 300px;
+    border: 1px solid #2a3852;
+    border-radius: 10px;
+    background: #0a1020;
+    color: #d8e4ff;
+    font: 14px/1.8 Consolas, monospace;
+    padding: 10px 0;
+}
+
+.CodeMirror-gutters {
+    background: #10182a;
+    border-right: 1px solid #2a3852;
+}
+
+.CodeMirror-linenumber {
+    color: #7383a3;
+}
+
+.CodeMirror-cursor {
+    border-left: 2px solid #ffffff;
+}
+
+.CodeMirror-focused {
+    border-color: #6289ff;
+    box-shadow: 0 0 0 3px #6289ff20;
+}
+
+.CodeMirror pre.CodeMirror-line {
+    padding-left: 8px;
+}
+
+/* Match CodeMirror to the Adaptive Compiler Studio theme */
+.CodeMirror {
+    background: #0a1020 !important;
+    color: #d8e4ff !important;
+    border: 1px solid #2a3852;
+    border-radius: 10px;
+    height: 300px;
+    font: 14px/1.8 Consolas, monospace;
+}
+
+.CodeMirror-gutters {
+    background: #10182a !important;
+    border-right: 1px solid #2a3852 !important;
+}
+
+.CodeMirror-linenumber {
+    color: #7383a3 !important;
+}
+
+.CodeMirror-cursor {
+    border-left: 2px solid #ffffff !important;
+}
+
+.CodeMirror-selected {
+    background: #33466b !important;
+}
+
+.CodeMirror-focused {
+    border-color: #6289ff;
+    box-shadow: 0 0 0 3px #6289ff20;
+}
+
+.editor-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+#applyRepairBtn {
+    background: #16805d;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#applyRepairBtn:hover {
+    background: #116b4d;
+}
+
+#applyRepairBtn[hidden] {
+    display: none !important;
+}
+
+/* ------------------------------------------------------------------ */
+/* AI repair                                                           */
+/* ------------------------------------------------------------------ */
+[hidden] {
+    display: none !important;
+}
+
+#aiRepairBtn {
+    background: #4b3a8f;
+    border-color: #6b57c7;
+    color: #f1ecff;
+}
+
+.ai-panel {
+    margin-top: 22px;
+}
+
+.ai-message {
+    margin: 0 0 14px;
+    color: #b6c3de;
+    line-height: 1.5;
+}
+
+.ai-card {
+    border: 1px solid #27344d;
+    border-left-width: 4px;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+    background: #0f1626;
+}
+
+.ai-card.ok  { border-left-color: #2fbf8a; }
+.ai-card.bad { border-left-color: #d9606f; }
+
+.ai-card-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.ai-badge {
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 999px;
+}
+
+.ai-badge.ok  { color: #80e5b7; background: #183c32; }
+.ai-badge.bad { color: #ff9a9a; background: #48252d; }
+
+.ai-meta {
+    color: #8a99b8;
+    font-size: 0.82rem;
+}
+
+.ai-explain {
+    margin: 6px 0 10px;
+    line-height: 1.5;
+}
+
+.ai-warning {
+    margin: 6px 0 10px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    color: #ffcf8a;
+    background: #49351f;
+    font-size: 0.9rem;
+}
+
+.ai-diff {
+    margin: 8px 0 12px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    background: #0a0f1c;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 0.88rem;
+    white-space: pre-wrap;
+    overflow-x: auto;
+}
+
+.diff-add { color: #80e5b7; background: #12382d; display: block; }
+.diff-del { color: #ff9a9a; background: #3b1f27; display: block; }
+.diff-ctx { color: #8a99b8; display: block; }
+
+.ai-issues summary {
+    cursor: pointer;
+    color: #9fb2d6;
+    font-size: 0.88rem;
+}
+
+.ai-apply {
+    background: #16805d;
+    border: none;
+    color: white;
+}
+
+.ai-apply:disabled {
+    background: #2a3550;
+    color: #7d8aa8;
+    cursor: not-allowed;
+}

@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adaptive Compiler Studio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/dracula.min.css">
+</head>
+<body>
+    <header class="topbar">
+        <div class="logo">AC</div>
+        <div>
+            <h1>Adaptive Compiler Studio</h1>
+            <p>Context-aware error recovery & semantic repair</p>
+        </div>
+        <div class="status"><span></span> Local compiler</div>
+    </header>
+
+    <main>
+        <section class="panel editor-panel">
+            <div class="panel-heading">
+                <div>
+                    <span class="eyebrow">SOURCE EDITOR</span>
+                    <h2>Write your code</h2>
+                </div>
+                <button id="exampleBtn" class="secondary">Load example</button>
+            </div>
+
+            <textarea id="sourceCode" spellcheck="false">int main() {
+    int count = 5;
+    int marks = 85;
+    int total = count + marks;
+}
+</textarea>
+
+            <div class="editor-footer">
+                <span id="lineCount">4 lines</span>
+
+                <div class="editor-actions">
+                    <button id="aiRepairBtn" hidden>
+                        ✨ AI repair
+                    </button>
+
+                    <button id="applyRepairBtn" hidden>
+                        🔧 Apply Repair
+                    </button>
+
+                    <button id="compileBtn" class="primary">
+                        ▶ Compile program
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="results-grid">
+            <article class="panel">
+                <div class="panel-heading">
+                    <div>
+                        <span class="eyebrow">DIAGNOSTICS</span>
+                        <h2>Errors & repairs</h2>
+                    </div>
+                    <span id="resultStatus" class="tag">Ready</span>
+                </div>
+                <pre id="diagnostics" class="output">Run your program to see diagnostics.</pre>
+            </article>
+
+            <article class="panel">
+                <div class="panel-heading">
+                    <div>
+                        <span class="eyebrow">INTERMEDIATE CODE</span>
+                        <h2>Generated IR</h2>
+                    </div>
+                    <button id="copyBtn" class="secondary">Copy output</button>
+                </div>
+                <pre id="irOutput" class="output">Your intermediate representation will appear here.</pre>
+            </article>
+        </section>
+
+        <section id="aiPanel" class="panel ai-panel" hidden>
+            <div class="panel-heading">
+                <div>
+                    <span class="eyebrow">AI REPAIR</span>
+                    <h2>Model-proposed fixes, verified by your compiler</h2>
+                </div>
+                <span id="aiStatus" class="tag">Idle</span>
+            </div>
+            <div id="aiResults"></div>
+        </section>
+
+        <p class="footnote">
+            Compiler runs locally · AI repair sends your source to the configured LLM provider (Gemini or Claude) only when you click it
+        </p>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/clike/clike.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

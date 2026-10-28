@@ -1,0 +1,5 @@
+int main() {
+    int count = 5;
+    int marks = 85;
+    int total = cuont + marks;
+}

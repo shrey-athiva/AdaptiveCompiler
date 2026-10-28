@@ -1,0 +1,4 @@
+flask>=3.0
+# Optional - only needed for the Claude provider (the Gemini provider uses
+# the standard library only):
+# anthropic>=2.1

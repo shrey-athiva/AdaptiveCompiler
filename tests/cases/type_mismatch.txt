@@ -1,0 +1,3 @@
+int main() {
+    int ratio = 3.5;
+}
